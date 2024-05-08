@@ -1,0 +1,92 @@
+{
+  "name": "formatjs",
+  "version": "1.0.0",
+  "private": false,
+  "description": "format tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "rollup -c -w --bundleConfigAsCjs && tsc",
+    "build": "tsc --build --clean && tsc --build && rollup -c --bundleConfigAsCjs",
+    "start:docs": "docgeni serve --port 4600 --configuration production",
+    "build:docs": "docgeni build --configuration production",
+    "prepare": "husky install",
+    "lint": "eslint -c eslint.config.mjs --fix",
+    "prettier": "prettier --write \"*src/**/*.ts\"",
+    "prerelease": "yarn build",
+    "commitlint": "commitlint --edit",
+    "lint-staged": "lint-staged",
+    "test": "jest",
+    "coveralls": "jest --coverage",
+    "pub": "npm publish",
+    "pub-next": "npm publish --tag next"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xinglu01/formatJs.git"
+  },
+  "author": "xinglu01 <15245457817@163.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xinglu01/formatJs/issues"
+  },
+  "homepage": "https://github.com/xinglu01/formatJs#readme",
+  "keywords": [],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/eslint-parser": "^7.24.5",
+    "@babel/preset-env": "^7.24.4",
+    "@commitlint/cli": "17.8.1",
+    "@commitlint/config-conventional": "17.8.1",
+    "@docgeni/angular": "16.0.0",
+    "@docgeni/cli": "^2.3.1",
+    "@docgeni/template": "^2.3.1",
+    "@eslint/js": "^9.1.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "fsevents": "^2.3.3",
+    "globals": "^15.1.0",
+    "husky": "8.0.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "15.2.2",
+    "lodash": "^4.17.21",
+    "prettier": "3.2.5",
+    "pretty-quick": "1.10.0",
+    "rollup": "^4.14.3",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "4.9.5",
+    "typescript-eslint": "^7.8.0"
+  },
+  "dependencies": {}
+}

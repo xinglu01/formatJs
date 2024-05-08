@@ -1,0 +1,65 @@
+name: Publish
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 18.18.0
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+            - name: Publish
+              if: startsWith(github.head_ref, 'release-auto-v')
+              run: |
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  npm run pub
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Publish-next
+              if: startsWith(github.head_ref, 'release-auto-next-v')
+              run: |
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  npm run pub-next
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: 发布npm包
+                run: |
+                  npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+                  npm publish
+                env:
+                  NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy to server
+              uses: easingthemes/ssh-deploy@v2
+              with:
+                  GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+                  server: ${{ secrets.SERVER }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.SSH_KEY }}
+                  source: 'dist/'

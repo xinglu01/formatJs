@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es2018", // 指定目标编译版本，es2018 支持 ES6 特性
+        "module": "ESNext", // 指定生成的模块系统类型。
+        "esModuleInterop": true, // 允许 ES6 模块与其他模块之间的交互。
+        "forceConsistentCasingInFileNames": true,
+        "strict": true, // 开启严格类型检查，防止类型不匹配的问题。
+        "skipLibCheck": true, // 跳过对库文件的类型检查
+        "allowJs": true, // 是否允许js代码
+        "checkJs": true, // 检查js代码错误
+        "rootDir": "./src", // 指定根目录
+        "outDir": "./dist", // 指定编译输出目录
+        "baseUrl": ".", // 设置项目的根目录，这样 TypeScript 就可以从项目的根目录开始查找模块。
+        "lib": ["dom", "esnext"], // 指定项目中要使用的库，这里是 esnext 和 dom，表示支持 ES6 特性以及 DOM 相关 API
+        "paths": {
+            // 指定模块的路径，在文件之直接 import * from 'src';
+            "@/*": ["./src/*"]
+        },
+        "moduleResolution": "classic",
+        "noImplicitAny": false,
+        "noImplicitThis": false, // 设置 this 有隐式的any类型
+        "sourceMap": true // 生成相应的.map文件
+    },
+    "include": ["src/**/*"], // 指定哪些文件需要被编译
+    "exclude": ["node_modules", "src/test", "dist"] // 指定不需要被编译的文件目录
+}
