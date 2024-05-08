@@ -43,17 +43,9 @@ jobs:
                   npm run pub-next
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: 发布npm包
-                run: |
-                  npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-                  npm publish
-                env:
-                  NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
-
     deploy:
         needs: build
         runs-on: ubuntu-latest
-
         steps:
             - name: Deploy to server
               uses: easingthemes/ssh-deploy@v2
