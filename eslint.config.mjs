@@ -12,7 +12,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ["**/**/*.js", "**/**/*.ts", "**/**/*.tsx"],
-    ignores: ["dist", "**/*.test.js", "./rollup.config.js"],
+    ignores: ["dist", "**/*.test.ts", "./rollup.config.js"],
     rules: {
       semi: ["error"]
     }

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import { defaultDateProperties, getMaxLength } from "../utils/utils";
-import { DateFormatter } from "./date";
+import * as utils from '../utils/utils';
+import { DateFormatter } from './date';
 
-export const initDateFormatter = function(properties) {
-    var that = this;
-    var target = defaultDateProperties({}, properties);
+export const initDateFormatter = function (properties) {
+    const that = this;
+    const target = utils.defaultDateProperties({}, properties);
     that.dateFormatter = new DateFormatter(
         target.datePattern,
         target.dateMin,
@@ -13,6 +13,6 @@ export const initDateFormatter = function(properties) {
 
     that.blocks = that.dateFormatter.getBlocks();
     that.blocksLength = that.blocks.length;
-    that.maxLength = getMaxLength(that.blocks);
+    that.maxLength = utils.getMaxLength(that.blocks);
     return that;
 };

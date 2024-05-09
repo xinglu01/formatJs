@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-function defaultDateProperties(target, opts) {
+export function defaultDateProperties(target, opts) {
     // date
     target.date = !!opts.date;
     target.datePattern = opts.datePattern || ['Y', 'm', 'd'];
@@ -14,11 +14,13 @@ function defaultDateProperties(target, opts) {
     return target;
 }
 
-function stripDelimiters(value, delimiter, delimiters) {
-    var owner = this;
+export function stripDelimiters(value, delimiter, delimiters) {
+    const owner = this;
     // single delimiter
     if (delimiters.length === 0) {
-        var delimiterRE = delimiter ? owner.getDelimiterREByDelimiter(delimiter) : '';
+        const delimiterRE = delimiter
+            ? owner.getDelimiterREByDelimiter(delimiter)
+            : '';
         return value.replace(delimiterRE, '');
     }
     // multiple delimiters
@@ -29,26 +31,16 @@ function stripDelimiters(value, delimiter, delimiters) {
     });
     return value;
 }
-;
-
-function getDelimiterREByDelimiter(delimiter) {
+export function getDelimiterREByDelimiter(delimiter) {
     return new RegExp(delimiter.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), 'g');
 }
 
-function getMaxLength(blocks) {
+export function getMaxLength(blocks) {
     return blocks.reduce(function (previous, current) {
         return previous + current;
     }, 0);
 }
 
-function sum(...args) {
+export function sum(...args) {
     return args.reduce((prev, total) => total + prev, 0);
 }
-
-module.exports = {
-    defaultDateProperties: defaultDateProperties,
-    stripDelimiters: stripDelimiters,
-    getDelimiterREByDelimiter: getDelimiterREByDelimiter,
-    getMaxLength: getMaxLength,
-    sum: sum
-};

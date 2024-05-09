@@ -1,9 +1,9 @@
 {
-  "name": "formatjs",
+  "name": "formatjs-date",
   "version": "1.0.0",
   "private": false,
   "description": "format tool",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "rollup -c -w --bundleConfigAsCjs && tsc",
     "build": "tsc --build --clean && tsc --build && rollup -c --bundleConfigAsCjs",
