@@ -22,10 +22,13 @@ jobs:
                   node-version: 18.18.0
 
             - name: Install dependencies
-              run: npm install
+              run: yarn install
 
+            - run: npm ci
             - name: Build
-              run: npm run build
+              run: |
+                  npm run lint
+                  npm run test
 
             - name: Publish
               if: startsWith(github.head_ref, 'release-auto-v')
