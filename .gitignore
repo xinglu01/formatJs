@@ -3,6 +3,7 @@
 node_modules/
 dist
 .git
+coverage
 
 # Created by https://www.toptal.com/developers/gitignore/api/yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn
@@ -27,3 +28,4 @@ dist
 .docgeni
 .prettierignore
 .husky
+.eslintignore

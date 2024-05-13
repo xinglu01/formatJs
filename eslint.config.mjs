@@ -12,10 +12,12 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ["**/**/*.js", "**/**/*.ts", "**/**/*.tsx"],
-    ignores: ["dist", "**/*.test.ts", "./rollup.config.js"],
     rules: {
       semi: ["error"]
     }
+  },
+  {
+    ignores: ["dist/**", "**/*.test.ts", ".docgeni/**", "coverage/**", "node_modules/**"]
   },
   {
     languageOptions: {
