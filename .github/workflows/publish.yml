@@ -24,11 +24,13 @@ jobs:
             - name: Install dependencies
               run: npm run install
 
-            - run: npm ci
             - name: Build
               run: |
                   npm run lint
                   npm run test
+
+            - name: Ci
+              run: npm ci
 
             - name: Publish
               if: startsWith(github.head_ref, 'release-auto-v')
@@ -38,6 +40,7 @@ jobs:
                   npm run pub
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
             - name: Publish-next
               if: startsWith(github.head_ref, 'release-auto-next-v')
               run: |
@@ -46,15 +49,3 @@ jobs:
                   npm run pub-next
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - name: Deploy to server
-              uses: easingthemes/ssh-deploy@v2
-              with:
-                  GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-                  server: ${{ secrets.SERVER }}
-                  username: ${{ secrets.USERNAME }}
-                  key: ${{ secrets.SSH_KEY }}
-                  source: 'dist/'
