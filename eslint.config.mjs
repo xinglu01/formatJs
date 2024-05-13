@@ -17,7 +17,7 @@ export default [
     }
   },
   {
-    ignores: ["dist/**", ".docgeni/**", "node_modules/**"]
+    ignores: ["dist/**", ".docgeni/**", "node_modules/**", "scripts/**"]
   },
   {
     languageOptions: {

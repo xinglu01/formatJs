@@ -11,18 +11,27 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     input: './src/index.ts',
-    output: {
-        file: 'dist/index.js',
+    output: [{
+        file: 'dist/dist.es.js',
         format: 'es',
         sourcemap: true
-    },
+    }, {
+        file: 'dist/dist.cjs.js',
+        format: 'cjs',
+        sourcemap: true
+    }, {
+        file: 'dist/dist.umd.js',
+        name: 'dist_umd',
+        format: 'umd',
+        sourcemap: true
+    }],
     plugins: [
         ts(),
         isProduction && terser(),
-        resolve({ // 解析第三方模块
-            customResolveOptions: {
-                moduleDirectory: 'moment'
-              }
+        resolve({
+            jsnext: true,
+            main: true,
+            browser: true
         }),
         server({
             port: 4000,
