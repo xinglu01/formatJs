@@ -4,6 +4,8 @@ import livereload from 'rollup-plugin-livereload';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from 'rollup-plugin-terser';
+import resolve from '@rollup/plugin-node-resolve';
+
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -12,11 +14,12 @@ module.exports = {
     output: {
         file: 'dist/index.js',
         format: 'es',
-        sourcemap: true,
+        sourcemap: true
     },
     plugins: [
         ts(),
         isProduction && terser(),
+        resolve(), // 解析第三方模块
         server({
             port: 4000,
             open: true,
@@ -35,6 +38,6 @@ module.exports = {
                     },
                 ],
             ],
-        }),
+        })
     ],
 };

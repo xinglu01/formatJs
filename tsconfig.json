@@ -16,7 +16,7 @@
             // 指定模块的路径，在文件之直接 import * from 'src';
             "@/*": ["./src/*"]
         },
-        "moduleResolution": "classic",
+        "moduleResolution": "node",
         "noImplicitAny": false,
         "noImplicitThis": false, // 设置 this 有隐式的any类型
         "sourceMap": true // 生成相应的.map文件
