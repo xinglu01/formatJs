@@ -23,18 +23,15 @@ jobs:
 
             - name: Install dependencies
               if: startsWith(matrix.os, 'macOS')
-              run: yarn install
+              run: npm ci --force
 
             - name: Build
               run: |
                   npm run lint
                   npm run test
 
-            - name: Ci
-              run: npm ci
-
             - name: Publish
-              if: startsWith(github.head_ref, 'release-auto-v')
+              if: startsWith(github.head_ref, 'v-auto')
               run: |
                   git config user.name github-actions
                   git config user.email github-actions@github.com
@@ -43,10 +40,32 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Publish-next
-              if: startsWith(github.head_ref, 'release-auto-next-v')
+              if: startsWith(github.head_ref, 'v-next-auto')
               run: |
                   git config user.name github-actions
                   git config user.email github-actions@github.com
                   npm run pub-next
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Read package.json
+              id: read-version
+              uses: notiz-dev/github-action-json-property@release
+              with:
+                  path: 'package.json'
+                  prop_path: 'version'
+
+            autoMerge:
+                    if: startsWith(github.head_ref, 'v-auto-')
+                    needs: [publish]
+                    runs-on: ubuntu-latest
+                    steps:
+                      - id: autoMerge
+                        name: autoMerge
+                        uses: 'pascalgn/automerge-action@v0.15.5'
+                        env:
+                          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+                          MERGE_LABELS: ''
+                          MERGE_FORKS: 'false'
+                          MERGE_RETRIES: '20'
+                          MERGE_RETRY_SLEEP: '60000'

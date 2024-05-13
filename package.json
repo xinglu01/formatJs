@@ -89,5 +89,8 @@
     "ts-jest": "^29.1.2",
     "typescript": "4.9.5",
     "typescript-eslint": "^7.8.0"
+  },
+  "resolutions": {
+    "moment": "2.24.0"
   }
 }

@@ -19,7 +19,11 @@ module.exports = {
     plugins: [
         ts(),
         isProduction && terser(),
-        resolve(), // 解析第三方模块
+        resolve({ // 解析第三方模块
+            customResolveOptions: {
+                moduleDirectory: 'moment'
+              }
+        }),
         server({
             port: 4000,
             open: true,

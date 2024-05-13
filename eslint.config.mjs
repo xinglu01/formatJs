@@ -17,7 +17,7 @@ export default [
     }
   },
   {
-    ignores: ["dist/**", "**/*.test.ts", ".docgeni/**", "coverage/**", "node_modules/**"]
+    ignores: ["dist/**", ".docgeni/**", "node_modules/**"]
   },
   {
     languageOptions: {

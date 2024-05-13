@@ -4,6 +4,7 @@ on:
         branches:
             # 触发ci/cd的代码分支
             - main
+            - "releases/**"
 jobs:
     build:
         # 指定操作系统
