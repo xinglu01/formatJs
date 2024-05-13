@@ -22,6 +22,7 @@ jobs:
                   node-version: 18.18.0
 
             - name: Install dependencies
+              if: startsWith(matrix.os, 'macOS')
               run: yarn install
 
             - name: Build
