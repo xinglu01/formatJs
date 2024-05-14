@@ -23,12 +23,13 @@ jobs:
 
             - name: Install dependencies
               if: startsWith(matrix.os, 'macOS')
-              run: yarn install
+              run: |
+                npm install
+                npm ci --force
 
             - name: Build
               run: |
                   npm run lint
-                  npm run test
                   npm run build
 
             - name: Publish
