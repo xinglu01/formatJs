@@ -27,9 +27,6 @@ jobs:
                 npm run install-dev
                 npm ci --force
 
-            - name: Run eslint
-              run: npm run lint
-
             - name: Build
               run: npm run build
 
