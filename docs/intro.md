@@ -11,7 +11,7 @@ order: 11
 执行如下命令安装`formatJs`
 
 ```bash
-$ npm i formatJs --save
+$ npm i formatjs-date --save
 // or
-$ yarn add formatJs
+$ yarn add formatjs-date
 ```

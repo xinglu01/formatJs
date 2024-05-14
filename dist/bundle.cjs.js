@@ -4637,8 +4637,8 @@ var moment$1 = /*#__PURE__*/_mergeNamespaces({
 	default: moment
 }, [momentExports]);
 
-function format(pattern) {
-    moment().format(pattern);
+function format(date, pattern) {
+    return moment(date).format(pattern || 'YYYY-MM-dd hh:mm:ss');
 }
 
 var format$1 = /*#__PURE__*/Object.freeze({
@@ -4940,8 +4940,6 @@ var utils = /*#__PURE__*/Object.freeze({
 	stripDelimiters: stripDelimiters,
 	sum: sum
 });
-
-console.log('==111===', sum(1, 2));
 
 exports.date = date;
 exports.dateFormat = format$1;
