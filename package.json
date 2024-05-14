@@ -13,6 +13,7 @@
     "start:docs": "docgeni serve --port 4600 --configuration production",
     "build:docs": "docgeni build --configuration production",
     "prepare": "husky install",
+    "install-dev": "npm install --f",
     "lint": "eslint -c eslint.config.mjs --fix",
     "prettier": "prettier --write \"*src/**/*.ts\"",
     "prerelease": "yarn build",

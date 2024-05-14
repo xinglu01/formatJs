@@ -24,13 +24,14 @@ jobs:
             - name: Install dependencies
               if: startsWith(matrix.os, 'macOS')
               run: |
-                npm install
+                npm run install-dev
                 npm ci --force
 
+            - name: Run eslint
+                run: npm run lint
+
             - name: Build
-              run: |
-                  npm run lint
-                  npm run build
+              run: npm run build
 
             - name: Publish
               if: startsWith(github.head_ref, 'v-auto')
