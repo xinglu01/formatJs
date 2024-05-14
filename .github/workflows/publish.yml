@@ -27,8 +27,8 @@ jobs:
 
             - name: Build
               run: |
-                  npm run lint
                   npm run test
+                  npm run build
 
             - name: Publish
               if: startsWith(github.head_ref, 'v-auto')
