@@ -12,16 +12,16 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
     input: './src/index.ts',
     output: [{
-        file: 'dist/dist.es.js',
+        file: 'dist/bundle.es.js',
         format: 'es',
         sourcemap: true
     }, {
-        file: 'dist/dist.cjs.js',
+        file: 'dist/bundle.cjs.js',
         format: 'cjs',
         sourcemap: true
     }, {
-        file: 'dist/dist.umd.js',
-        name: 'dist_umd',
+        file: 'dist/bundle.umd.js',
+        name: 'umd',
         format: 'umd',
         sourcemap: true
     }],
