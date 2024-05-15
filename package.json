@@ -1,6 +1,6 @@
 {
   "name": "formatjs-date",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "format tool",
   "main": "dist/bundle.cjs.js",
