@@ -19,6 +19,7 @@
         "moduleResolution": "node",
         "noImplicitAny": false,
         "declaration": true,
+        "types": ["node"],
         "noImplicitThis": false, // 设置 this 有隐式的any类型
         "sourceMap": true // 生成相应的.map文件
     },
