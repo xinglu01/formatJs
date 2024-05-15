@@ -8,7 +8,7 @@
   "module": "dist/bundle.esm.js",
   "browser": "dist/bundle.browser.js",
   "scripts": {
-    "start": "rollup -c -w --bundleConfigAsCjs && tsc",
+    "start": "npm run start:docs",
     "build": "tsc --build --clean && tsc --build && rollup -c --bundleConfigAsCjs",
     "start:docs": "docgeni serve --port 4600 --configuration production",
     "build:docs": "docgeni build --configuration production",
@@ -19,6 +19,7 @@
     "prerelease": "yarn build",
     "commitlint": "commitlint --edit",
     "lint-staged": "lint-staged",
+    "ci": "npm run lint && npm run test",
     "test": "jest",
     "coveralls": "jest --coverage",
     "pub": "npm publish",
