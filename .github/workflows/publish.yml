@@ -23,11 +23,11 @@ jobs:
 
             - name: Install dependencies
               if: startsWith(matrix.os, 'macOS')
-              run: npm run install-dev
+              run: yarn install
 
             - name: Build
               run:  |
-                  npm run ci
+                  npm ci
                   npm run build
 
             - name: Publish

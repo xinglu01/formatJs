@@ -4886,7 +4886,6 @@ var date = /*#__PURE__*/Object.freeze({
 	DateFormatter: DateFormatter
 });
 
-/* eslint-disable @typescript-eslint/no-this-alias */
 function defaultDateProperties(target, opts) {
     // date
     target.date = !!opts.date;

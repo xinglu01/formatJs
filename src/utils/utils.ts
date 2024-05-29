@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
 export function defaultDateProperties(target, opts) {
     // date
     target.date = !!opts.date;

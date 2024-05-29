@@ -2,7 +2,6 @@
 # Dependency directories
 node_modules/
 .git
-coverage
 
 # Created by https://www.toptal.com/developers/gitignore/api/yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn
@@ -27,3 +26,4 @@ coverage
 .docgeni
 .prettierignore
 .husky
+coverage
